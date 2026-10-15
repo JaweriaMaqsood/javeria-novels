@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# ڈومین ملنے کے بعد نیچے والی لائن میں اپنا پتہ لکھیں
-Sitemap: https://YOUR-SITE.vercel.app/sitemap.xml
+Sitemap: https://javeria-novels.vercel.app/sitemap.xml
