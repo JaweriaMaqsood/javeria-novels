@@ -132,6 +132,13 @@ a.eprow:hover{background:var(--rose2)}
 .eprow.soon b{background:var(--line);color:var(--soft)}
 .eprow.soon .go{color:var(--soft)}
 @media(max-width:600px){.bkTop{flex-direction:column;align-items:center}.bcover{width:170px}.binfo{width:100%}}
+
+.main1{padding-top:26px;padding-bottom:36px;max-width:860px}
+.hnov{display:flex;gap:26px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;transition:.2s}
+.hnov:hover{box-shadow:0 10px 26px rgba(46,26,43,.12);transform:translateY(-2px)}
+.hnov h3{margin:6px 0 0;font-size:clamp(24px,4vw,32px);line-height:2.1;color:var(--plum);font-weight:700}
+.hnov .by{margin:0;color:var(--soft);line-height:2}
+@media(max-width:600px){.hnov{flex-direction:column;text-align:center}.hnov .meta{justify-content:center}}
 </style>
 </head>
 <body>
@@ -154,10 +161,8 @@ a.eprow:hover{background:var(--rose2)}
 
 <header><div class="wrap bar">
   <a class="logo" href="#"><img class="lg" alt="" width="44" height="44"><span><b>Javeria</b><small>Urdu Novels</small></span></a>
-  <nav><a class="on" href="#">Home</a><a href="#feat">Novels</a><a href="#cats">Categories</a><a href="#">Authors</a><a href="#">About Us</a><a href="#">Contact</a></nav>
-  <label class="sbox"><input type="search" placeholder="Search novels..."><svg class="i"><use href="#search"/></svg></label>
-  <div class="ic"><svg class="i"><use href="#user"/></svg><svg class="i"><use href="#heart"/></svg></div>
-</div></header>
+  <nav><a class="on" href="#">Home</a><a href="#novel">Novel</a></nav>
+  </div></header>
 
 <div id="home">
 <section class="hero">
@@ -186,39 +191,21 @@ a.eprow:hover{background:var(--rose2)}
   </div>
 </section>
 
-<div class="wrap main">
-<div>
-  <h2 class="h" id="cats"><svg class="i"><use href="#heart"/></svg>Browse by Category</h2>
-  <div class="cats">
-    <a class="cat" href="#"><svg class="i"><use href="#heart"/></svg>Romance</a>
-    <a class="cat" href="#"><svg class="i"><use href="#users"/></svg>Social Drama</a>
-    <a class="cat" href="#"><svg class="i"><use href="#home"/></svg>Family</a>
-    <a class="cat" href="#"><svg class="i"><use href="#search"/></svg>Mystery</a>
-    <a class="cat" href="#"><svg class="i"><use href="#dome"/></svg>Historical</a>
-    <a class="cat" href="#"><svg class="i"><use href="#spark"/></svg>Fantasy</a>
-    <a class="cat" href="#"><svg class="i"><use href="#quill"/></svg>Women's Fiction</a>
-    <a class="cat" href="#"><svg class="i"><use href="#book"/></svg>Short Stories</a>
-  </div>
-
-  <h2 class="h" id="feat"><svg class="i"><use href="#crown"/></svg>Featured Novels<a href="#">View All →</a></h2>
-  <div class="feat" id="featList"></div>
-
-  <div class="banner">
-    <div class="ur">اپنی پسند کی ناول ابھی پڑھیں</div>
-    <a class="btn" href="#"><span class="ur" style="font-size:14px;font-weight:400">تمام ناول دیکھیں</span><svg class="i"><use href="#arrow"/></svg></a>
-  </div>
-
-  <h2 class="h"><svg class="i"><use href="#bell"/></svg>Latest Updates<a href="#">View All →</a></h2>
-  <div class="lat" id="latList"></div>
+<div class="wrap main1">
+  <h2 class="h" id="feat"><svg class="i"><use href="#crown"/></svg>Our Novel</h2>
+  <a class="hnov" href="#novel">
+    <div class="bcover ur"><span>تیری چاہت کا قرض</span><em>Javeria</em></div>
+    <div class="binfo">
+      <div class="meta"><span class="pill">Romance</span><span class="pill">Family Drama</span></div>
+      <h3 class="ur">تیری چاہت کا قرض</h3>
+      <p class="ur by">تحریر: جویریہ</p>
+      <p class="ur syn">ایک حادثہ، ایک نکاح اور ایک ایسا راز جو حویلی کی دیواروں میں دفن ہے۔ کیا ہانیہ اپنے بھائی کو بچا پائے گی؟ اور کیا نفرت کبھی محبت میں بدل سکتی ہے؟</p>
+      <span class="btn r">Read Now</span>
+    </div>
+  </a>
+  <h2 class="h" style="margin-top:30px"><svg class="i"><use href="#bell"/></svg>Latest Episodes</h2>
+  <div class="eplist" id="latList"></div>
 </div>
-
-<aside class="side">
-  <div class="quote">Har kahani<br>ek nayi duniya hai…</div>
-  <div class="box"><h2 class="h"><svg class="i"><use href="#spark"/></svg>Popular Novels</h2><div id="popList"></div></div>
-  <div class="box"><h2 class="h"><svg class="i"><use href="#clock"/></svg>Ongoing Novels<a href="#">View All →</a></h2><div id="ongList"></div></div>
-</aside>
-</div>
-
 </div>
 
 <div id="book" hidden>
@@ -246,7 +233,7 @@ a.eprow:hover{background:var(--rose2)}
     <p class="ur">تحریر: جویریہ</p>
     <span class="epb ur" id="epTitle"></span>
   </header>
-  <article class="ep ur" id="ep-1" data-title="قسط 1: وہ رات" hidden>
+  <article class="ep ur" id="ep-1" data-title="قسط 1: وہ رات" data-date="Oct 21, 2026" hidden>
 <p>بارش اس رات کچھ یوں برس رہی تھی جیسے آسمان بھی کسی کا ماتم کر رہا ہو۔</p>
 <p>ہانیہ پرانے گھر کے برآمدے میں کھڑی دروازے کی طرف دیکھ رہی تھی۔ گھڑی رات کے بارہ بجا چکی تھی مگر اس کا چھوٹا بھائی بلال ابھی تک نہیں لوٹا تھا۔ ابا کو گئے صرف چھ مہینے ہوئے تھے، اور اس بڑے سے گھر میں اب دو ہی لوگ بچے تھے، وہ اور بلال۔</p>
 <p>“کہاں رہ گیا ہے یہ لڑکا؟” اس نے دوپٹے کا کونا انگلیوں پر لپیٹتے ہوئے خود سے کہا۔</p>
@@ -291,7 +278,7 @@ a.eprow:hover{background:var(--rose2)}
 <hr>
 <p class="end">(جاری ہے...)</p>
   </article>
-  <article class="ep ur" id="ep-2" data-title="قسط 2: حویلی کی پہلی رات" hidden>
+  <article class="ep ur" id="ep-2" data-title="قسط 2: حویلی کی پہلی رات" data-date="Oct 21, 2026" hidden>
 <p>شاہ حویلی کا بڑا دروازہ ہانیہ کے پیچھے بند ہوا تو اسے لگا جیسے کسی نے دنیا کو باہر ہی چھوڑ دیا ہو۔</p>
 <p>نہ کوئی ڈھول، نہ کوئی گیت، نہ کسی نے سر پر ہاتھ رکھ کر دعا دی۔ دلہن کا استقبال کرنے کے لیے صرف ایک ملازمہ آگے بڑھی، جس کی عمر ساٹھ کے لگ بھگ ہو گی اور جس کی آنکھوں میں ہمدردی اور خوف ایک ساتھ تیر رہے تھے۔</p>
 <p>“آئیے بی بی، میں رقیہ ہوں،” اس نے دھیرے سے کہا۔</p>
@@ -334,7 +321,7 @@ a.eprow:hover{background:var(--rose2)}
 <footer>
   <div class="wrap fb">
     <a class="logo" href="#"><img class="lg" alt="" width="44" height="44"><span><b>Javeria</b><small>Urdu Novels</small></span></a>
-    <nav><a href="#">Home</a><a href="#">Novels</a><a href="#">Categories</a><a href="#">Authors</a><a href="#">About Us</a><a href="#">Contact</a></nav>
+    <nav><a href="#">Home</a><a href="#novel">Novel</a></nav>
     <div class="ur" style="font-size:15px;line-height:2">کتابیں صرف الفاظ نہیں ہوتیں،<br>یہ دل کی باتیں ہوتی ہیں…</div>
   </div>
   <div class="cp">© 2026 Javeria Urdu Novels. All rights reserved.</div>
@@ -342,20 +329,8 @@ a.eprow:hover{background:var(--rose2)}
 
 <script>
 document.querySelectorAll(".lg").forEach(function(i){i.src=document.querySelector("link[rel=icon]").href});
-var G=["#5a1f3c,#1b0d1c","#6b3a4a,#241024","#0d2a2a,#06100f","#7a2d1f,#1d0e0b","#6a3d55,#1a1030","#7b2c4a,#190d18","#3d2a5c,#150c1f","#8a3c28,#1f0f0d"];
-function bg(i){var g=G[i%G.length].split(",");return "background:linear-gradient(170deg,"+g[0]+","+g[1]+")"}
-function ic(n){return '<svg class="i"><use href="#'+n+'"/></svg>'}
-var F=[["تیری چاہت کا قرض","Romance","New","0"],["خوابوں کی حقیقت","Social Drama","9.8K","984"],["سیاہ راز","Mystery","7.6K","721"],["دھڑکنیں","Family","6.9K","642"],["بادشاہ کی بیٹی","Historical","5.1K","503"]];
-document.getElementById("featList").innerHTML=F.map(function(f,i){return '<a class="nv" href="#"><div class="cover" style="'+bg(i)+'"><span class="tag">'+f[1]+'</span><span class="ur">'+f[0]+'</span><em>Javeria</em></div><h3 class="ur">'+f[0]+'</h3><small>Javeria</small><div class="st"><span>'+ic("eye")+' '+f[2]+'</span><span>'+ic("heart")+' '+f[3]+'</span></div></a>'}).join("");
-var L=[["تیری چاہت کا قرض","Chapter 2","Oct 21, 2026"],["خوابوں کی حقیقت","Chapter 10","Oct 17, 2026"],["سیاہ راز","Chapter 7","Oct 16, 2026"],["دھڑکنیں","Chapter 5","Oct 15, 2026"]];
-document.getElementById("latList").innerHTML=L.map(function(l,i){return '<a class="li" href="#"><div class="mini" style="'+bg(i)+'"></div><div><span class="ur">'+l[0]+'</span><small>'+l[1]+'</small><small>'+l[2]+'</small></div></a>'}).join("");
-var P=[["عشق بے پرواہ","22.6K"],["تیرا میرا قصہ","18.3K"],["خوابوں کی بادشاہت","15.7K"],["وہ جو کبھی نہ ملی","12.9K"],["آخری خط","11.4K"]];
-document.getElementById("popList").innerHTML=P.map(function(p,i){return '<a class="row" href="#"><b>'+(i+1)+'</b><div class="mini" style="'+bg(i+3)+'"></div><div><span class="ur">'+p[0]+'</span><small>'+ic("eye")+' '+p[1]+'</small></div></a>'}).join("");
-var O=[["ادھوری کہانی","Chapter 12"],["محبت کا سفر","Chapter 8"],["سفر زندگی","Chapter 15"]];
-document.getElementById("ongList").innerHTML=O.map(function(o,i){return '<a class="row" href="#"><div class="mini" style="'+bg(i+5)+'"></div><div><span class="ur">'+o[0]+'</span><small>'+o[1]+'</small></div><span class="pill">Ongoing</span></a>'}).join("");
-
-var Fx=document.querySelector("#featList .nv");if(Fx)Fx.href="#novel";
-var Lx=document.querySelector("#latList .li");if(Lx)Lx.href="#novel";
+function buildLatest(){var o="",t=document.querySelectorAll("#reader article");for(var i=t.length-1;i>=0;i--){var x=t[i],n=x.id.replace("ep-","");o+='<a class="eprow" href="#episode-'+n+'"><b>'+n+'</b><span class="t ur">'+x.dataset.title+'</span><span class="go">'+(x.dataset.date||"")+'</span></a>'}document.getElementById("latList").innerHTML=o}
+buildLatest();
 var TOTAL=10,TITLE="تیری چاہت کا قرض";
 function buildBook(){
   var rows="",done=0;
