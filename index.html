@@ -227,7 +227,7 @@ a.trow:hover{background:#f7e9d3}
   <nav><a class="on" href="#">Home</a><a href="#read">Novel</a></nav>
   </div></header>
 
-<div id="home">
+<div id="homeV">
 <section class="hero">
   <svg class="bg" viewBox="0 0 1200 290" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <defs>
@@ -268,7 +268,7 @@ a.trow:hover{background:#f7e9d3}
 </div>
 </div>
 
-<div id="book" hidden>
+<div id="bookV" hidden>
   <div class="wrap bk">
     <div class="btop"><a href="#">← Back to Home</a><span id="pInfo"></span></div>
     <div id="opened">
@@ -427,7 +427,7 @@ function showPage(p){
   savePage(b);history.replaceState(null,"","#read-"+b);window.scrollTo(0,0);
 }
 function route(){
-  var h=location.hash,m=h.match(/^#read(?:-(\d+))?$/),home=document.getElementById("home"),bk=document.getElementById("book");
+  var h=location.hash,m=h.match(/^#read(?:-(\d+))?$/),home=document.getElementById("homeV"),bk=document.getElementById("bookV");
   var wasHome=!home.hidden;
   home.hidden=true;bk.hidden=true;
   if(m||h==="#novel"){
@@ -443,11 +443,11 @@ document.getElementById("pPrev").onclick=function(){showPage(CUR-(isSingle()?1:2
 document.getElementById("pNext").onclick=function(){showPage(CUR+(isSingle()?1:2))};
 document.getElementById("pSel").onchange=function(){showPage(+this.value)};
 document.addEventListener("keydown",function(e){
-  if(document.getElementById("book").hidden||e.target.tagName==="SELECT")return;
+  if(document.getElementById("bookV").hidden||e.target.tagName==="SELECT")return;
   if(e.key==="ArrowLeft")document.getElementById("pNext").click();
   if(e.key==="ArrowRight")document.getElementById("pPrev").click();
 });
-window.addEventListener("resize",function(){if(!document.getElementById("book").hidden)showPage(CUR)});
+window.addEventListener("resize",function(){if(!document.getElementById("bookV").hidden)showPage(CUR)});
 window.addEventListener("hashchange",route);route();
 </script>
 </body>
