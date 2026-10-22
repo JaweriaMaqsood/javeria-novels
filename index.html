@@ -198,6 +198,10 @@ a.eprow:hover{background:var(--rose2)}
 a.trow:hover{background:#f7e9d3}
 .trow.soon{opacity:.5}
 @media(max-width:859px){.pgx{padding:18px 18px 14px;min-height:520px}.pgx p{font-size:18px}}
+
+.homebook{display:flex;justify-content:center;padding:16px 0 34px;cursor:pointer}
+.homebook .b3d{width:230px;transition:transform .25s}
+.homebook:hover .b3d,.homebook:focus-visible .b3d{transform:translateY(-6px) rotate(-1.5deg)}
 </style>
 </head>
 <body>
@@ -220,7 +224,7 @@ a.trow:hover{background:#f7e9d3}
 
 <header><div class="wrap bar">
   <a class="logo" href="#"><img class="lg" alt="" width="44" height="44"><span><b>Javeria</b><small>Urdu Novels</small></span></a>
-  <nav><a class="on" href="#">Home</a><a href="#novel">Novel</a></nav>
+  <nav><a class="on" href="#">Home</a><a href="#read">Novel</a></nav>
   </div></header>
 
 <div id="home">
@@ -252,37 +256,22 @@ a.trow:hover{background:#f7e9d3}
 
 <div class="wrap main1">
   <h2 class="h" id="feat"><svg class="i"><use href="#crown"/></svg>Our Novel</h2>
-  <a class="hnov" href="#novel">
-    <div class="bcover ur"><span>تیری چاہت کا قرض</span><em>Javeria</em></div>
-    <div class="binfo">
-      <div class="meta"><span class="pill">Romance</span><span class="pill">Family Drama</span></div>
-      <h3 class="ur">تیری چاہت کا قرض</h3>
-      <p class="ur by">تحریر: جویریہ</p>
-      <p class="ur syn">ایک حادثہ، ایک نکاح اور ایک ایسا راز جو حویلی کی دیواروں میں دفن ہے۔ کیا ہانیہ اپنے بھائی کو بچا پائے گی؟ اور کیا نفرت کبھی محبت میں بدل سکتی ہے؟</p>
-      <span class="btn r">Read Now</span>
-    </div>
+  <a class="homebook" href="#read" aria-label="تیری چاہت کا قرض پڑھیں">
+    <div class="b3d"><div class="cv">
+      <svg class="i" style="font-size:44px"><use href="#book"/></svg>
+      <div class="ur ct">تیری چاہت کا قرض</div>
+      <div class="cl"></div>
+      <em>Javeria</em>
+      <div class="ur cb">جویریہ</div>
+    </div></div>
   </a>
-  <h2 class="h" style="margin-top:30px"><svg class="i"><use href="#bell"/></svg>Latest Episodes</h2>
-  <div class="eplist" id="latList"></div>
 </div>
 </div>
 
 <div id="book" hidden>
   <div class="wrap bk">
     <div class="btop"><a href="#">← Back to Home</a><span id="pInfo"></span></div>
-
-    <div id="closed" class="cw">
-      <div class="b3d"><div class="cv">
-        <svg class="i" style="font-size:44px"><use href="#book"/></svg>
-        <div class="ur ct">تیری چاہت کا قرض</div>
-        <div class="cl"></div>
-        <em>Javeria</em>
-        <div class="ur cb">جویریہ</div>
-      </div></div>
-      <div class="bb" id="bBtns"></div>
-    </div>
-
-    <div id="opened" hidden>
+    <div id="opened">
       <div class="openbook" id="ob">
         <div class="spread" id="spread"><div class="pgx ur" id="pR"></div><div class="pgx ur" id="pL"></div></div>
       </div>
@@ -293,7 +282,7 @@ a.trow:hover{background:#f7e9d3}
       </div>
       <div class="bar2"><i id="pBar"></i></div>
       <p class="ur snote" id="pNote" hidden>باقی قسطیں جلد آ رہی ہیں…</p>
-      <div class="bb" style="justify-content:center;margin-top:14px"><a class="btn o" href="#read-0">Contents</a><a class="btn o" href="#novel">Close Book</a></div>
+      <div class="bb" style="justify-content:center;margin-top:14px"><a class="btn o" href="#read-0">Contents</a><a class="btn o" href="#">Close Book</a></div>
     </div>
   </div>
 </div>
@@ -386,7 +375,7 @@ a.trow:hover{background:#f7e9d3}
 <footer>
   <div class="wrap fb">
     <a class="logo" href="#"><img class="lg" alt="" width="44" height="44"><span><b>Javeria</b><small>Urdu Novels</small></span></a>
-    <nav><a href="#">Home</a><a href="#novel">Novel</a></nav>
+    <nav><a href="#">Home</a><a href="#read">Novel</a></nav>
     <div class="ur" style="font-size:15px;line-height:2">کتابیں صرف الفاظ نہیں ہوتیں،<br>یہ دل کی باتیں ہوتی ہیں…</div>
   </div>
   <div class="cp">© 2026 Javeria Urdu Novels. All rights reserved.</div>
@@ -394,8 +383,6 @@ a.trow:hover{background:#f7e9d3}
 
 <script>
 document.querySelectorAll(".lg").forEach(function(i){i.src=document.querySelector("link[rel=icon]").href});
-function buildLatest(){var o="",t=document.querySelectorAll("#reader article");for(var i=t.length-1;i>=0;i--){var x=t[i],n=x.id.replace("ep-","");o+='<a class="eprow" href="#episode-'+n+'"><b>'+n+'</b><span class="t ur">'+x.dataset.title+'</span><span class="go">'+(x.dataset.date||"")+'</span></a>'}document.getElementById("latList").innerHTML=o}
-buildLatest();
 var TOTAL=10,TITLE="تیری چاہت کا قرض",KEY="jv_tcq_page2",PG=[],EPSTART={},EPTITLE={},CUR=0;
 function getSaved(){try{return parseInt(localStorage.getItem(KEY),10)||0}catch(e){return 0}}
 function savePage(p){try{localStorage.setItem(KEY,String(p))}catch(e){}}
@@ -422,13 +409,6 @@ function paginate(){
   PG=[t+'</div>'];
   S.forEach(function(h,i){PG.push('<div class="pgtop">'+TITLE+'</div>'+h+'<div class="pgno">'+(i+1)+'</div>')});
 }
-function buildClosed(){
-  var done=Object.keys(EPSTART).length,s=getSaved();
-  
-  var b='<a class="btn r" href="#read-0">Open Book</a>';
-  if(s>0&&s<PG.length)b+='<a class="btn o" href="#read-'+s+'">Continue • Page '+s+'</a>';
-  document.getElementById("bBtns").innerHTML=b;
-}
 function showPage(p){
   var N=PG.length,s=isSingle();p=Math.max(0,Math.min(N-1,p||0));
   var b=s?p:p-(p%2);CUR=b;
@@ -448,28 +428,26 @@ function showPage(p){
 }
 function route(){
   var h=location.hash,m=h.match(/^#read(?:-(\d+))?$/),home=document.getElementById("home"),bk=document.getElementById("book");
+  var wasHome=!home.hidden;
   home.hidden=true;bk.hidden=true;
   if(m||h==="#novel"){
     bk.hidden=false;paginate();
     var o="";for(var i=0;i<PG.length;i++)o+='<option value="'+i+'">'+(i===0?"Contents":"Page "+i+" / "+(PG.length-1))+'</option>';
     document.getElementById("pSel").innerHTML=o;
-    var cl=document.getElementById("closed"),op=document.getElementById("opened"),ob=document.getElementById("ob");
-    if(m){
-      var was=!cl.hidden;cl.hidden=true;op.hidden=false;
-      if(was){ob.classList.remove("opening");void ob.offsetWidth;ob.classList.add("opening")}
-      showPage(m[1]!==undefined?+m[1]:getSaved());
-    }else{cl.hidden=false;op.hidden=true;document.getElementById("pInfo").textContent="";buildClosed();window.scrollTo(0,0)}
+    var ob=document.getElementById("ob");
+    if(wasHome){ob.classList.remove("opening");void ob.offsetWidth;ob.classList.add("opening")}
+    showPage(m&&m[1]!==undefined?+m[1]:getSaved());
   }else{home.hidden=false;window.scrollTo(0,0)}
 }
 document.getElementById("pPrev").onclick=function(){showPage(CUR-(isSingle()?1:2))};
 document.getElementById("pNext").onclick=function(){showPage(CUR+(isSingle()?1:2))};
 document.getElementById("pSel").onchange=function(){showPage(+this.value)};
 document.addEventListener("keydown",function(e){
-  if(document.getElementById("opened").hidden||document.getElementById("book").hidden||e.target.tagName==="SELECT")return;
+  if(document.getElementById("book").hidden||e.target.tagName==="SELECT")return;
   if(e.key==="ArrowLeft")document.getElementById("pNext").click();
   if(e.key==="ArrowRight")document.getElementById("pPrev").click();
 });
-window.addEventListener("resize",function(){if(!document.getElementById("opened").hidden)showPage(CUR)});
+window.addEventListener("resize",function(){if(!document.getElementById("book").hidden)showPage(CUR)});
 window.addEventListener("hashchange",route);route();
 </script>
 </body>
