@@ -279,10 +279,6 @@ a.trow:hover{background:#f7e9d3}
         <em>Javeria</em>
         <div class="ur cb">جویریہ</div>
       </div></div>
-      <h1 class="ur">تیری چاہت کا قرض</h1>
-      <p class="ur by">تحریر: جویریہ</p>
-      <div class="meta"><span class="pill">Romance</span><span class="pill">Family Drama</span><span class="pill" id="bStat"></span></div>
-      <p class="ur syn">ایک حادثہ، ایک نکاح اور ایک ایسا راز جو حویلی کی دیواروں میں دفن ہے۔ کیا ہانیہ اپنے بھائی کو بچا پائے گی؟ اور کیا نفرت کبھی محبت میں بدل سکتی ہے؟</p>
       <div class="bb" id="bBtns"></div>
     </div>
 
@@ -428,7 +424,7 @@ function paginate(){
 }
 function buildClosed(){
   var done=Object.keys(EPSTART).length,s=getSaved();
-  document.getElementById("bStat").textContent="Ongoing • "+done+"/"+TOTAL+" episodes • "+(PG.length-1)+" pages";
+  
   var b='<a class="btn r" href="#read-0">Open Book</a>';
   if(s>0&&s<PG.length)b+='<a class="btn o" href="#read-'+s+'">Continue • Page '+s+'</a>';
   document.getElementById("bBtns").innerHTML=b;
