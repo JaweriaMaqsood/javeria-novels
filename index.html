@@ -139,6 +139,39 @@ a.eprow:hover{background:var(--rose2)}
 .hnov h3{margin:6px 0 0;font-size:clamp(24px,4vw,32px);line-height:2.1;color:var(--plum);font-weight:700}
 .hnov .by{margin:0;color:var(--soft);line-height:2}
 @media(max-width:600px){.hnov{flex-direction:column;text-align:center}.hnov .meta{justify-content:center}}
+
+.b3d{flex:none;position:relative;width:min(230px,60vw);aspect-ratio:3/4;isolation:isolate}
+.b3d:after{content:"";position:absolute;right:-9px;top:7px;bottom:7px;width:11px;border-radius:0 6px 6px 0;background:repeating-linear-gradient(180deg,#fff7ea 0 2px,#e2d0b4 2px 3px);z-index:-1}
+.b3d .cv{position:absolute;inset:0;border-radius:6px 14px 14px 6px;background:linear-gradient(160deg,#6a2a4a,#2a1226);box-shadow:inset 0 0 0 7px #2a1226,inset 0 0 0 8px #d9b375,14px 18px 30px rgba(46,26,43,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#f3d9a4;text-align:center;padding:24px 18px;overflow:hidden}
+.b3d .cv:before{content:"";position:absolute;inset:0 auto 0 0;width:18px;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.12) 65%,transparent)}
+.b3d .ct{font-size:26px;line-height:2.1;font-weight:700;text-shadow:0 2px 6px #000}
+.b3d .cl{width:60%;height:1px;background:#d9b375;margin:4px 0}
+.b3d em{font-family:"Great Vibes",cursive;font-style:normal;font-size:24px}
+.b3d .cb{font-size:14px;opacity:.85;line-height:2}
+.bb{display:flex;gap:10px;flex-wrap:wrap}
+.btn.o{background:transparent;color:var(--rose);border:2px solid var(--rose)}
+.rd{max-width:680px;margin:0 auto;padding:18px 16px 40px}
+.rtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:700}
+.rtop a{color:var(--rose)}.rtop span{color:var(--soft);font-size:13px}
+.paper{position:relative;background:linear-gradient(90deg,#f3e5cd 0,#fffaf0 6%,#fffaf0 94%,#f1e3c9 100%);border:1px solid #e6d3b3;border-radius:6px 14px 14px 6px;box-shadow:0 12px 28px rgba(46,26,43,.18),inset 0 0 40px rgba(180,140,80,.12);padding:22px 28px 16px;min-height:540px;color:#3a2634;direction:rtl}
+.paper:before{content:"";position:absolute;top:0;bottom:0;left:0;width:14px;background:linear-gradient(90deg,rgba(120,80,40,.22),transparent)}
+.pgtop{font-size:13px;color:#a58a6a;text-align:center;border-bottom:1px solid #ead9bd;padding-bottom:2px;margin-bottom:12px;line-height:2}
+.eh{font-size:26px;text-align:center;color:#2e1a2b;margin:0 0 10px;line-height:2.2;font-weight:700}
+.paper p{font-size:19px;line-height:2.9;margin:0 0 6px;text-align:justify}
+.paper .end{text-align:center;color:var(--rose)}
+.orn{text-align:center;color:var(--rose);letter-spacing:6px;margin:14px 0}
+.pgno{text-align:center;font-family:Lora,serif;color:#a58a6a;margin-top:16px}
+.flip{animation:fl .35s ease}
+@keyframes fl{from{opacity:0;transform:perspective(900px) rotateY(-8deg) translateX(-12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.flip{animation:none}}
+.ctl{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:16px;direction:rtl}
+.ctl select{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;padding:7px 14px;text-align:center}
+.nb{line-height:2;font-size:15px;padding:3px 16px;white-space:nowrap}
+.nb:disabled{opacity:.35;cursor:default}
+.bar2{height:6px;background:var(--line);border-radius:9px;margin-top:14px;overflow:hidden}
+.bar2 i{display:block;height:100%;background:var(--rose);width:0;transition:width .3s}
+.snote{text-align:center;color:var(--rose);margin:10px 0 0;line-height:2.2}
+@media(max-width:600px){.paper{padding:18px 18px 14px}.paper p{font-size:18px}}
 </style>
 </head>
 <body>
@@ -212,27 +245,39 @@ a.eprow:hover{background:var(--rose2)}
   <div class="wrap bk">
     <a class="back2" href="#">← Back to Home</a>
     <div class="bkTop">
-      <div class="bcover ur"><span>تیری چاہت کا قرض</span><em>Javeria</em></div>
+      <div class="b3d"><div class="cv">
+        <svg class="i" style="font-size:44px"><use href="#book"/></svg>
+        <div class="ur ct">تیری چاہت کا قرض</div>
+        <div class="cl"></div>
+        <em>Javeria</em>
+        <div class="ur cb">جویریہ</div>
+      </div></div>
       <div class="binfo">
         <h1 class="ur">تیری چاہت کا قرض</h1>
         <p class="ur by">تحریر: جویریہ</p>
         <div class="meta"><span class="pill">Romance</span><span class="pill">Family Drama</span><span class="pill" id="bStat"></span></div>
         <p class="ur syn">ایک حادثہ، ایک نکاح اور ایک ایسا راز جو حویلی کی دیواروں میں دفن ہے۔ کیا ہانیہ اپنے بھائی کو بچا پائے گی؟ اور کیا نفرت کبھی محبت میں بدل سکتی ہے؟</p>
-        <a class="btn r" href="#episode-1">Start Reading</a>
+        <div class="bb" id="bBtns"></div>
       </div>
     </div>
-    <h2 class="h"><svg class="i"><use href="#book"/></svg>Episodes</h2>
+    <h2 class="h"><svg class="i"><use href="#book"/></svg>Contents</h2>
     <div class="eplist" id="epList"></div>
   </div>
 </div>
 
 <div id="reader" hidden>
-  <header class="rh">
-    <a class="back" href="#novel">← واپس ناول کی طرف</a>
-    <h1 class="ur">تیری چاہت کا قرض</h1>
-    <p class="ur">تحریر: جویریہ</p>
-    <span class="epb ur" id="epTitle"></span>
-  </header>
+  <div class="rd">
+    <div class="rtop"><a href="#novel">← Contents</a><span id="pInfo"></span></div>
+    <div class="paper ur flip" id="pg"></div>
+    <div class="ctl">
+      <button class="btn r nb ur" id="pPrev" type="button">→ پچھلا صفحہ</button>
+      <select id="pSel" aria-label="Go to page"></select>
+      <button class="btn r nb ur" id="pNext" type="button">اگلا صفحہ ←</button>
+    </div>
+    <div class="bar2"><i id="pBar"></i></div>
+    <p class="ur snote" id="pNote" hidden>باقی قسطیں جلد آ رہی ہیں…</p>
+  </div>
+  <div id="src" hidden>
   <article class="ep ur" id="ep-1" data-title="قسط 1: وہ رات" data-date="Oct 21, 2026" hidden>
 <p>بارش اس رات کچھ یوں برس رہی تھی جیسے آسمان بھی کسی کا ماتم کر رہا ہو۔</p>
 <p>ہانیہ پرانے گھر کے برآمدے میں کھڑی دروازے کی طرف دیکھ رہی تھی۔ گھڑی رات کے بارہ بجا چکی تھی مگر اس کا چھوٹا بھائی بلال ابھی تک نہیں لوٹا تھا۔ ابا کو گئے صرف چھ مہینے ہوئے تھے، اور اس بڑے سے گھر میں اب دو ہی لوگ بچے تھے، وہ اور بلال۔</p>
@@ -315,7 +360,7 @@ a.eprow:hover{background:var(--rose2)}
 <hr>
 <p class="end">(جاری ہے...)</p>
   </article>
-  <div class="enav"><a href="#" id="prevEp">← Previous</a><a href="#" id="nextEp">Next Episode →</a></div>
+  </div>
 </div>
 
 <footer>
@@ -331,32 +376,71 @@ a.eprow:hover{background:var(--rose2)}
 document.querySelectorAll(".lg").forEach(function(i){i.src=document.querySelector("link[rel=icon]").href});
 function buildLatest(){var o="",t=document.querySelectorAll("#reader article");for(var i=t.length-1;i>=0;i--){var x=t[i],n=x.id.replace("ep-","");o+='<a class="eprow" href="#episode-'+n+'"><b>'+n+'</b><span class="t ur">'+x.dataset.title+'</span><span class="go">'+(x.dataset.date||"")+'</span></a>'}document.getElementById("latList").innerHTML=o}
 buildLatest();
-var TOTAL=10,TITLE="تیری چاہت کا قرض";
+var TOTAL=10,TITLE="تیری چاہت کا قرض",KEY="jv_tcq_page",PAGES=[],EPSTART={},EPTITLE={};
+function getSaved(){try{return parseInt(localStorage.getItem(KEY),10)||0}catch(e){return 0}}
+function savePage(p){try{localStorage.setItem(KEY,String(p))}catch(e){}}
+function paginate(){
+  PAGES=[];EPSTART={};EPTITLE={};
+  document.querySelectorAll("#src article").forEach(function(a){
+    var n=+a.id.split("-")[1];EPSTART[n]=PAGES.length+1;EPTITLE[n]=a.dataset.title;
+    var cur={h:'<h2 class="eh ur">'+a.dataset.title+'</h2>',l:120};
+    Array.prototype.forEach.call(a.children,function(el){
+      if(el.tagName==="HR"){cur.h+='<div class="orn">&#9825; &nbsp;&#9825; &nbsp;&#9825;</div>';cur.l+=60;return}
+      var L=el.textContent.length;
+      if(cur.l+L>750&&cur.l>150){PAGES.push(cur.h);cur={h:"",l:0}}
+      cur.h+=el.outerHTML;cur.l+=L;
+    });
+    PAGES.push(cur.h);
+  });
+}
 function buildBook(){
+  paginate();
   var rows="",done=0;
   for(var n=1;n<=TOTAL;n++){
-    var a=document.getElementById("ep-"+n);
-    if(a){done++;rows+='<a class="eprow" href="#episode-'+n+'"><b>'+n+'</b><span class="t ur">'+a.dataset.title+'</span><span class="go">Read</span></a>'}
+    if(EPSTART[n]){done++;rows+='<a class="eprow" href="#read-'+EPSTART[n]+'"><b>'+n+'</b><span class="t ur">'+EPTITLE[n]+'</span><span class="go">Page '+EPSTART[n]+'</span></a>'}
     else rows+='<div class="eprow soon" aria-disabled="true"><b>'+n+'</b><span class="t ur">قسط '+n+' — جلد آ رہی ہے</span><span class="go">Coming soon</span></div>';
   }
   document.getElementById("epList").innerHTML=rows;
-  document.getElementById("bStat").textContent="Ongoing • "+done+"/"+TOTAL+" episodes";
+  document.getElementById("bStat").textContent="Ongoing • "+done+"/"+TOTAL+" episodes • "+PAGES.length+" pages";
+  var s=getSaved(),b='<a class="btn r" href="#read-1">Open Book</a>';
+  if(s>1&&s<=PAGES.length)b+='<a class="btn o" href="#read-'+s+'">Continue • Page '+s+'</a>';
+  document.getElementById("bBtns").innerHTML=b;
 }
-function route(){
-  var m=location.hash.match(/^#episode-(\d+)$/),home=document.getElementById("home"),rd=document.getElementById("reader"),bk=document.getElementById("book");
-  document.querySelectorAll("#reader article").forEach(function(a){a.hidden=true});
-  home.hidden=true;rd.hidden=true;bk.hidden=true;
-  if(m&&document.getElementById("ep-"+m[1])){
-    var n=+m[1],a=document.getElementById("ep-"+n);
-    a.hidden=false;rd.hidden=false;
-    document.getElementById("epTitle").textContent=a.dataset.title;
-    var p=document.getElementById("prevEp"),x=document.getElementById("nextEp");
-    p.className=document.getElementById("ep-"+(n-1))?"":"off";p.href="#episode-"+(n-1);
-    x.className=document.getElementById("ep-"+(n+1))?"":"off";x.href="#episode-"+(n+1);
-  }else if(location.hash==="#novel"||m){buildBook();bk.hidden=false}
-  else home.hidden=false;
+function showPage(p){
+  var n=PAGES.length;p=Math.max(1,Math.min(n,p||1));
+  var pg=document.getElementById("pg");
+  pg.innerHTML='<div class="pgtop">'+TITLE+'</div>'+PAGES[p-1]+'<div class="pgno">'+p+'</div>';
+  pg.classList.remove("flip");void pg.offsetWidth;pg.classList.add("flip");
+  document.getElementById("pSel").value=p;
+  document.getElementById("pBar").style.width=(p/n*100)+"%";
+  document.getElementById("pInfo").textContent="Page "+p+" of "+n;
+  document.getElementById("pPrev").disabled=p<=1;
+  document.getElementById("pNext").disabled=p>=n;
+  document.getElementById("pNote").hidden=!(p===n&&Object.keys(EPSTART).length<TOTAL);
+  savePage(p);window.CUR=p;
+  history.replaceState(null,"","#read-"+p);
   window.scrollTo(0,0);
 }
+function route(){
+  var h=location.hash,m=h.match(/^#read(?:-(\d+))?$/),home=document.getElementById("home"),rd=document.getElementById("reader"),bk=document.getElementById("book");
+  home.hidden=true;rd.hidden=true;bk.hidden=true;
+  if(m){
+    paginate();
+    var sel=document.getElementById("pSel"),o="";
+    for(var i=1;i<=PAGES.length;i++)o+='<option value="'+i+'">Page '+i+' / '+PAGES.length+'</option>';
+    sel.innerHTML=o;rd.hidden=false;
+    showPage(m[1]?+m[1]:(getSaved()||1));
+  }else if(h==="#novel"){buildBook();bk.hidden=false;window.scrollTo(0,0)}
+  else{home.hidden=false;window.scrollTo(0,0)}
+}
+document.getElementById("pPrev").onclick=function(){showPage(window.CUR-1)};
+document.getElementById("pNext").onclick=function(){showPage(window.CUR+1)};
+document.getElementById("pSel").onchange=function(){showPage(+this.value)};
+document.addEventListener("keydown",function(e){
+  if(document.getElementById("reader").hidden||e.target.tagName==="SELECT")return;
+  if(e.key==="ArrowLeft")showPage(window.CUR+1);
+  if(e.key==="ArrowRight")showPage(window.CUR-1);
+});
 window.addEventListener("hashchange",route);route();
 </script>
 </body>
