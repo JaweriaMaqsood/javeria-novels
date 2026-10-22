@@ -172,6 +172,32 @@ a.eprow:hover{background:var(--rose2)}
 .bar2 i{display:block;height:100%;background:var(--rose);width:0;transition:width .3s}
 .snote{text-align:center;color:var(--rose);margin:10px 0 0;line-height:2.2}
 @media(max-width:600px){.paper{padding:18px 18px 14px}.paper p{font-size:18px}}
+
+.btop{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-weight:700}
+.btop a{color:var(--rose)}.btop span{color:var(--soft);font-size:13px}
+.bk{max-width:1000px}
+.cw{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cw .b3d{width:min(260px,66vw);margin:8px 0 22px}
+.cw h1{margin:0;font-size:clamp(26px,4.5vw,36px);line-height:2.1;color:var(--plum);font-weight:700}
+.cw .meta{justify-content:center}.cw .syn{max-width:560px;text-align:center}.cw .bb{justify-content:center}
+.openbook{background:linear-gradient(160deg,#5a2342,#2a1226);border-radius:14px;padding:12px;box-shadow:0 18px 40px rgba(46,26,43,.35)}
+.openbook.opening{animation:opn .6s ease}
+@keyframes opn{from{opacity:0;transform:perspective(1200px) rotateY(-35deg) scale(.85)}to{opacity:1;transform:none}}
+.spread{display:grid;grid-template-columns:1fr 1fr;direction:rtl;position:relative;border-radius:6px;overflow:hidden;background:#fffaf0}
+.spread:after{content:"";position:absolute;top:0;bottom:0;left:50%;width:50px;margin-left:-25px;background:linear-gradient(90deg,transparent,rgba(120,80,40,.26),transparent);pointer-events:none}
+.spread.single{grid-template-columns:1fr}.spread.single #pL,.spread.single:after{display:none}
+.spread.flip{animation:fl .35s ease}
+.pgx{background:#fffaf0;padding:22px 30px 16px;min-height:580px;color:#3a2634;display:flex;flex-direction:column}
+.pgx p{font-size:19px;line-height:2.9;margin:0 0 6px;text-align:justify}
+.pgx .end{text-align:center;color:var(--rose)}
+.pgx .pgno{margin-top:auto;padding-top:14px}
+.toc{display:flex;flex-direction:column;gap:2px}
+.trow{display:flex;align-items:center;gap:10px;padding:2px 4px;border-bottom:1px dotted #d9c4a0;color:#3a2634;line-height:2.4;font-size:17px}
+.trow b{flex:none;font-family:Lora,serif;color:var(--rose);width:22px;text-align:center}
+.trow span{flex:1}.trow em{font-style:normal;font-family:Lora,serif;font-size:13px;color:#a58a6a}
+a.trow:hover{background:#f7e9d3}
+.trow.soon{opacity:.5}
+@media(max-width:859px){.pgx{padding:18px 18px 14px;min-height:520px}.pgx p{font-size:18px}}
 </style>
 </head>
 <body>
@@ -243,8 +269,9 @@ a.eprow:hover{background:var(--rose2)}
 
 <div id="book" hidden>
   <div class="wrap bk">
-    <a class="back2" href="#">← Back to Home</a>
-    <div class="bkTop">
+    <div class="btop"><a href="#">← Back to Home</a><span id="pInfo"></span></div>
+
+    <div id="closed" class="cw">
       <div class="b3d"><div class="cv">
         <svg class="i" style="font-size:44px"><use href="#book"/></svg>
         <div class="ur ct">تیری چاہت کا قرض</div>
@@ -252,32 +279,30 @@ a.eprow:hover{background:var(--rose2)}
         <em>Javeria</em>
         <div class="ur cb">جویریہ</div>
       </div></div>
-      <div class="binfo">
-        <h1 class="ur">تیری چاہت کا قرض</h1>
-        <p class="ur by">تحریر: جویریہ</p>
-        <div class="meta"><span class="pill">Romance</span><span class="pill">Family Drama</span><span class="pill" id="bStat"></span></div>
-        <p class="ur syn">ایک حادثہ، ایک نکاح اور ایک ایسا راز جو حویلی کی دیواروں میں دفن ہے۔ کیا ہانیہ اپنے بھائی کو بچا پائے گی؟ اور کیا نفرت کبھی محبت میں بدل سکتی ہے؟</p>
-        <div class="bb" id="bBtns"></div>
-      </div>
+      <h1 class="ur">تیری چاہت کا قرض</h1>
+      <p class="ur by">تحریر: جویریہ</p>
+      <div class="meta"><span class="pill">Romance</span><span class="pill">Family Drama</span><span class="pill" id="bStat"></span></div>
+      <p class="ur syn">ایک حادثہ، ایک نکاح اور ایک ایسا راز جو حویلی کی دیواروں میں دفن ہے۔ کیا ہانیہ اپنے بھائی کو بچا پائے گی؟ اور کیا نفرت کبھی محبت میں بدل سکتی ہے؟</p>
+      <div class="bb" id="bBtns"></div>
     </div>
-    <h2 class="h"><svg class="i"><use href="#book"/></svg>Contents</h2>
-    <div class="eplist" id="epList"></div>
+
+    <div id="opened" hidden>
+      <div class="openbook" id="ob">
+        <div class="spread" id="spread"><div class="pgx ur" id="pR"></div><div class="pgx ur" id="pL"></div></div>
+      </div>
+      <div class="ctl">
+        <button class="btn r nb ur" id="pPrev" type="button">→ پچھلا صفحہ</button>
+        <select id="pSel" aria-label="Go to page"></select>
+        <button class="btn r nb ur" id="pNext" type="button">اگلا صفحہ ←</button>
+      </div>
+      <div class="bar2"><i id="pBar"></i></div>
+      <p class="ur snote" id="pNote" hidden>باقی قسطیں جلد آ رہی ہیں…</p>
+      <div class="bb" style="justify-content:center;margin-top:14px"><a class="btn o" href="#read-0">Contents</a><a class="btn o" href="#novel">Close Book</a></div>
+    </div>
   </div>
 </div>
 
-<div id="reader" hidden>
-  <div class="rd">
-    <div class="rtop"><a href="#novel">← Contents</a><span id="pInfo"></span></div>
-    <div class="paper ur flip" id="pg"></div>
-    <div class="ctl">
-      <button class="btn r nb ur" id="pPrev" type="button">→ پچھلا صفحہ</button>
-      <select id="pSel" aria-label="Go to page"></select>
-      <button class="btn r nb ur" id="pNext" type="button">اگلا صفحہ ←</button>
-    </div>
-    <div class="bar2"><i id="pBar"></i></div>
-    <p class="ur snote" id="pNote" hidden>باقی قسطیں جلد آ رہی ہیں…</p>
-  </div>
-  <div id="src" hidden>
+<div id="src" hidden>
   <article class="ep ur" id="ep-1" data-title="قسط 1: وہ رات" data-date="Oct 21, 2026" hidden>
 <p>بارش اس رات کچھ یوں برس رہی تھی جیسے آسمان بھی کسی کا ماتم کر رہا ہو۔</p>
 <p>ہانیہ پرانے گھر کے برآمدے میں کھڑی دروازے کی طرف دیکھ رہی تھی۔ گھڑی رات کے بارہ بجا چکی تھی مگر اس کا چھوٹا بھائی بلال ابھی تک نہیں لوٹا تھا۔ ابا کو گئے صرف چھ مہینے ہوئے تھے، اور اس بڑے سے گھر میں اب دو ہی لوگ بچے تھے، وہ اور بلال۔</p>
@@ -360,7 +385,6 @@ a.eprow:hover{background:var(--rose2)}
 <hr>
 <p class="end">(جاری ہے...)</p>
   </article>
-  </div>
 </div>
 
 <footer>
@@ -376,71 +400,80 @@ a.eprow:hover{background:var(--rose2)}
 document.querySelectorAll(".lg").forEach(function(i){i.src=document.querySelector("link[rel=icon]").href});
 function buildLatest(){var o="",t=document.querySelectorAll("#reader article");for(var i=t.length-1;i>=0;i--){var x=t[i],n=x.id.replace("ep-","");o+='<a class="eprow" href="#episode-'+n+'"><b>'+n+'</b><span class="t ur">'+x.dataset.title+'</span><span class="go">'+(x.dataset.date||"")+'</span></a>'}document.getElementById("latList").innerHTML=o}
 buildLatest();
-var TOTAL=10,TITLE="تیری چاہت کا قرض",KEY="jv_tcq_page",PAGES=[],EPSTART={},EPTITLE={};
+var TOTAL=10,TITLE="تیری چاہت کا قرض",KEY="jv_tcq_page2",PG=[],EPSTART={},EPTITLE={},CUR=0;
 function getSaved(){try{return parseInt(localStorage.getItem(KEY),10)||0}catch(e){return 0}}
 function savePage(p){try{localStorage.setItem(KEY,String(p))}catch(e){}}
+function isSingle(){return window.innerWidth<860}
+function lab(i){return i===0?"Contents":i}
 function paginate(){
-  PAGES=[];EPSTART={};EPTITLE={};
+  var S=[];EPSTART={};EPTITLE={};
   document.querySelectorAll("#src article").forEach(function(a){
-    var n=+a.id.split("-")[1];EPSTART[n]=PAGES.length+1;EPTITLE[n]=a.dataset.title;
+    var n=+a.id.split("-")[1];EPSTART[n]=S.length+1;EPTITLE[n]=a.dataset.title;
     var cur={h:'<h2 class="eh ur">'+a.dataset.title+'</h2>',l:120};
     Array.prototype.forEach.call(a.children,function(el){
       if(el.tagName==="HR"){cur.h+='<div class="orn">&#9825; &nbsp;&#9825; &nbsp;&#9825;</div>';cur.l+=60;return}
       var L=el.textContent.length;
-      if(cur.l+L>750&&cur.l>150){PAGES.push(cur.h);cur={h:"",l:0}}
+      if(cur.l+L>750&&cur.l>150){S.push(cur.h);cur={h:"",l:0}}
       cur.h+=el.outerHTML;cur.l+=L;
     });
-    PAGES.push(cur.h);
+    S.push(cur.h);
   });
-}
-function buildBook(){
-  paginate();
-  var rows="",done=0;
+  var t='<div class="pgtop">'+TITLE+'</div><h2 class="eh ur">فہرست</h2><div class="toc">';
   for(var n=1;n<=TOTAL;n++){
-    if(EPSTART[n]){done++;rows+='<a class="eprow" href="#read-'+EPSTART[n]+'"><b>'+n+'</b><span class="t ur">'+EPTITLE[n]+'</span><span class="go">Page '+EPSTART[n]+'</span></a>'}
-    else rows+='<div class="eprow soon" aria-disabled="true"><b>'+n+'</b><span class="t ur">قسط '+n+' — جلد آ رہی ہے</span><span class="go">Coming soon</span></div>';
+    if(EPSTART[n])t+='<a class="trow" href="#read-'+EPSTART[n]+'"><b>'+n+'</b><span>'+EPTITLE[n]+'</span><em>'+EPSTART[n]+'</em></a>';
+    else t+='<div class="trow soon"><b>'+n+'</b><span>قسط '+n+' — جلد آ رہی ہے</span><em>soon</em></div>';
   }
-  document.getElementById("epList").innerHTML=rows;
-  document.getElementById("bStat").textContent="Ongoing • "+done+"/"+TOTAL+" episodes • "+PAGES.length+" pages";
-  var s=getSaved(),b='<a class="btn r" href="#read-1">Open Book</a>';
-  if(s>1&&s<=PAGES.length)b+='<a class="btn o" href="#read-'+s+'">Continue • Page '+s+'</a>';
+  PG=[t+'</div>'];
+  S.forEach(function(h,i){PG.push('<div class="pgtop">'+TITLE+'</div>'+h+'<div class="pgno">'+(i+1)+'</div>')});
+}
+function buildClosed(){
+  var done=Object.keys(EPSTART).length,s=getSaved();
+  document.getElementById("bStat").textContent="Ongoing • "+done+"/"+TOTAL+" episodes • "+(PG.length-1)+" pages";
+  var b='<a class="btn r" href="#read-0">Open Book</a>';
+  if(s>0&&s<PG.length)b+='<a class="btn o" href="#read-'+s+'">Continue • Page '+s+'</a>';
   document.getElementById("bBtns").innerHTML=b;
 }
 function showPage(p){
-  var n=PAGES.length;p=Math.max(1,Math.min(n,p||1));
-  var pg=document.getElementById("pg");
-  pg.innerHTML='<div class="pgtop">'+TITLE+'</div>'+PAGES[p-1]+'<div class="pgno">'+p+'</div>';
-  pg.classList.remove("flip");void pg.offsetWidth;pg.classList.add("flip");
-  document.getElementById("pSel").value=p;
-  document.getElementById("pBar").style.width=(p/n*100)+"%";
-  document.getElementById("pInfo").textContent="Page "+p+" of "+n;
-  document.getElementById("pPrev").disabled=p<=1;
-  document.getElementById("pNext").disabled=p>=n;
-  document.getElementById("pNote").hidden=!(p===n&&Object.keys(EPSTART).length<TOTAL);
-  savePage(p);window.CUR=p;
-  history.replaceState(null,"","#read-"+p);
-  window.scrollTo(0,0);
+  var N=PG.length,s=isSingle();p=Math.max(0,Math.min(N-1,p||0));
+  var b=s?p:p-(p%2);CUR=b;
+  var sp=document.getElementById("spread");
+  sp.classList.toggle("single",s);
+  document.getElementById("pR").innerHTML=PG[b];
+  document.getElementById("pL").innerHTML=PG[b+1]!==undefined?PG[b+1]:"";
+  sp.classList.remove("flip");void sp.offsetWidth;sp.classList.add("flip");
+  var last=s?b:Math.min(b+1,N-1);
+  document.getElementById("pSel").value=b;
+  document.getElementById("pBar").style.width=((last)/(N-1)*100)+"%";
+  document.getElementById("pInfo").textContent=(s||last===b?lab(b):lab(b)+" – "+lab(last))+" / "+(N-1);
+  document.getElementById("pPrev").disabled=b<=0;
+  document.getElementById("pNext").disabled=last>=N-1;
+  document.getElementById("pNote").hidden=!(last>=N-1&&Object.keys(EPSTART).length<TOTAL);
+  savePage(b);history.replaceState(null,"","#read-"+b);window.scrollTo(0,0);
 }
 function route(){
-  var h=location.hash,m=h.match(/^#read(?:-(\d+))?$/),home=document.getElementById("home"),rd=document.getElementById("reader"),bk=document.getElementById("book");
-  home.hidden=true;rd.hidden=true;bk.hidden=true;
-  if(m){
-    paginate();
-    var sel=document.getElementById("pSel"),o="";
-    for(var i=1;i<=PAGES.length;i++)o+='<option value="'+i+'">Page '+i+' / '+PAGES.length+'</option>';
-    sel.innerHTML=o;rd.hidden=false;
-    showPage(m[1]?+m[1]:(getSaved()||1));
-  }else if(h==="#novel"){buildBook();bk.hidden=false;window.scrollTo(0,0)}
-  else{home.hidden=false;window.scrollTo(0,0)}
+  var h=location.hash,m=h.match(/^#read(?:-(\d+))?$/),home=document.getElementById("home"),bk=document.getElementById("book");
+  home.hidden=true;bk.hidden=true;
+  if(m||h==="#novel"){
+    bk.hidden=false;paginate();
+    var o="";for(var i=0;i<PG.length;i++)o+='<option value="'+i+'">'+(i===0?"Contents":"Page "+i+" / "+(PG.length-1))+'</option>';
+    document.getElementById("pSel").innerHTML=o;
+    var cl=document.getElementById("closed"),op=document.getElementById("opened"),ob=document.getElementById("ob");
+    if(m){
+      var was=!cl.hidden;cl.hidden=true;op.hidden=false;
+      if(was){ob.classList.remove("opening");void ob.offsetWidth;ob.classList.add("opening")}
+      showPage(m[1]!==undefined?+m[1]:getSaved());
+    }else{cl.hidden=false;op.hidden=true;document.getElementById("pInfo").textContent="";buildClosed();window.scrollTo(0,0)}
+  }else{home.hidden=false;window.scrollTo(0,0)}
 }
-document.getElementById("pPrev").onclick=function(){showPage(window.CUR-1)};
-document.getElementById("pNext").onclick=function(){showPage(window.CUR+1)};
+document.getElementById("pPrev").onclick=function(){showPage(CUR-(isSingle()?1:2))};
+document.getElementById("pNext").onclick=function(){showPage(CUR+(isSingle()?1:2))};
 document.getElementById("pSel").onchange=function(){showPage(+this.value)};
 document.addEventListener("keydown",function(e){
-  if(document.getElementById("reader").hidden||e.target.tagName==="SELECT")return;
-  if(e.key==="ArrowLeft")showPage(window.CUR+1);
-  if(e.key==="ArrowRight")showPage(window.CUR-1);
+  if(document.getElementById("opened").hidden||document.getElementById("book").hidden||e.target.tagName==="SELECT")return;
+  if(e.key==="ArrowLeft")document.getElementById("pNext").click();
+  if(e.key==="ArrowRight")document.getElementById("pPrev").click();
 });
+window.addEventListener("resize",function(){if(!document.getElementById("opened").hidden)showPage(CUR)});
 window.addEventListener("hashchange",route);route();
 </script>
 </body>
