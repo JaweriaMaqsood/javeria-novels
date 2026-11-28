@@ -215,6 +215,122 @@ a.trow:hover{background:#f7e9d3}
 .b3d.v2 .cv:before{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(255,255,255,.1) 65%,transparent)}
 .b3d.v3 .cv{background:linear-gradient(160deg,#7a1230,#2b0614);color:#f3d9a4}
 .b3d.v3 .cv:before{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(255,255,255,.1) 65%,transparent)}
+/* ===== Storytelling home ===== */
+html{scroll-behavior:smooth}
+.sh-prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));z-index:60;pointer-events:none}
+.sh-hero{position:relative;height:calc(100svh - 72px);min-height:520px;max-height:860px;overflow:hidden;background:#2a1432;color:#fff;isolation:isolate}
+.sh-scene{position:absolute;inset:0;width:100%;height:100%}
+.sh-scene .ly{will-change:transform}
+.sh-star{animation:shTw 3.6s ease-in-out infinite}
+@keyframes shTw{0%,100%{opacity:.25}50%{opacity:1}}
+.sh-win{animation:shWin 5s ease-in-out infinite}
+@keyframes shWin{0%,100%{opacity:.55}45%{opacity:1}70%{opacity:.8}}
+.sh-moon{animation:shMoon 7s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes shMoon{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.sh-mist{animation:shMist 26s linear infinite alternate}
+.sh-mist.b{animation-duration:38s;animation-direction:alternate-reverse}
+@keyframes shMist{from{transform:translateX(-90px)}to{transform:translateX(90px)}}
+#shPetals{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.sh-herotxt{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 18px 60px}
+.sh-kick{font-size:clamp(15px,2.4vw,19px);color:var(--gold);line-height:2.2;margin:0;letter-spacing:.02em;opacity:0;animation:shUp 1s .2s forwards}
+.sh-title{margin:0;font-size:clamp(34px,8vw,76px);line-height:2.05;font-weight:700;text-shadow:0 4px 30px rgba(20,8,24,.6);display:flex;flex-wrap:wrap;justify-content:center;gap:0 .32em}
+.sh-title .w{opacity:0;display:inline-block;transform:translateY(26px);filter:blur(8px);animation:shWord 1.1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.5s + var(--i)*.28s)}
+@keyframes shWord{to{opacity:1;transform:none;filter:none}}
+@keyframes shUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sh-sub{font-family:"Great Vibes",cursive;font-size:clamp(24px,4.6vw,40px);color:#ffd9c2;margin-top:2px;opacity:0;animation:shUp 1.2s 2.1s forwards}
+.sh-ln{display:flex;align-items:center;gap:12px;color:var(--gold);margin:10px 0 0;opacity:0;animation:shUp 1s 2.4s forwards}
+.sh-ln:before,.sh-ln:after{content:"";width:70px;height:1px;background:var(--gold);opacity:.7}
+.sh-cue{position:absolute;z-index:3;left:50%;bottom:20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:#fff;font-family:Lora,serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.sh-cue i{width:22px;height:36px;border:2px solid rgba(255,255,255,.7);border-radius:14px;position:relative}
+.sh-cue i:after{content:"";position:absolute;left:50%;top:6px;width:4px;height:8px;margin-left:-2px;border-radius:3px;background:#fff;animation:shCue 1.8s infinite}
+@keyframes shCue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+.sh-story{position:relative;height:calc(100svh + var(--n,6)*62svh)}
+.sh-sticky{position:sticky;top:72px;height:calc(100svh - 72px);overflow:hidden;display:grid;place-items:center;color:#fff}
+.sh-bg{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease}
+.sh-bg.on{opacity:1}
+.sh-bg.b0{background:linear-gradient(180deg,#3a2150,#a34a6a 60%,#f0b38c)}
+.sh-bg.b1{background:linear-gradient(180deg,#242a45,#5f6a92 60%,#c4cce0)}
+.sh-bg.b2{background:linear-gradient(180deg,#0d0818,#2e1a2b)}
+.sh-bg.b3{background:radial-gradient(circle at 50% 55%,#6b2a4d,#150e22 62%)}
+.sh-bg.b4{background:linear-gradient(180deg,#221b32,#5b4a63)}
+.sh-bg.b5{background:linear-gradient(180deg,#4a2745,#c9566f 62%,#f3d9a4)}
+.sh-lines{position:relative;width:min(780px,90vw);height:60%;display:grid;place-items:center}
+.sh-lines p{position:absolute;margin:0;text-align:center;font-size:clamp(24px,5.4vw,46px);line-height:2.25;font-weight:400;text-shadow:0 3px 22px rgba(0,0,0,.45);opacity:0;transform:translateY(34px);filter:blur(6px);transition:opacity .9s ease,transform .9s ease,filter .9s ease;pointer-events:none}
+.sh-lines p.on{opacity:1;transform:none;filter:none}
+.sh-lines p.past{opacity:0;transform:translateY(-34px);filter:blur(6px)}
+.sh-lines p b{color:var(--gold);font-weight:700}
+.sh-dots{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px}
+.sh-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);transition:.4s}
+.sh-dots i.on{background:var(--gold);transform:scale(1.5)}
+
+.sh-sec{padding:70px 0 20px}
+.sh-sec .wrap{max-width:1000px}
+.sh-h{text-align:center;margin:0 0 6px;font-size:clamp(28px,5vw,40px);line-height:2.2;color:var(--plum);font-weight:700}
+.sh-hs{text-align:center;margin:0 auto 34px;max-width:560px;color:var(--soft);line-height:2.3;font-size:17px}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--dl,0s)}
+.rv.in{opacity:1;transform:none}
+.sh-chars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sh-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 16px 22px;text-align:center;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.sh-card:before{content:"";position:absolute;inset:0 0 auto 0;height:96px;background:linear-gradient(180deg,var(--c),transparent);opacity:.2}
+.sh-card:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 18px 36px rgba(46,26,43,.16)}
+.sh-av{position:relative;width:74px;height:74px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font-size:34px;font-weight:700;color:#fff;background:var(--c);box-shadow:0 0 0 6px rgba(255,255,255,.7),0 8px 20px rgba(0,0,0,.15);line-height:1}
+.sh-av span{display:block;margin-top:-8px}
+.sh-card h3{position:relative;margin:0;font-size:22px;line-height:2.1;color:var(--plum)}
+.sh-card p{position:relative;margin:0;font-size:15px;line-height:2.45;color:#5b4552}
+.sh-card.q .sh-av{background:repeating-linear-gradient(45deg,#8a7480,#8a7480 6px,#a38d99 6px,#a38d99 12px);animation:shPulse 2.6s infinite}
+@keyframes shPulse{0%,100%{box-shadow:0 0 0 6px rgba(255,255,255,.7),0 0 0 6px rgba(201,86,111,0)}50%{box-shadow:0 0 0 6px rgba(255,255,255,.7),0 0 0 16px rgba(201,86,111,.18)}}
+
+.sh-path{position:relative;max-width:760px;margin:0 auto;padding:10px 0 20px;direction:ltr}
+.sh-path:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--line);border-radius:3px}
+.sh-fill{position:absolute;left:50%;top:0;width:3px;margin-left:-1.5px;height:0;background:linear-gradient(180deg,var(--rose),var(--gold));border-radius:3px;box-shadow:0 0 14px rgba(201,86,111,.6)}
+.sh-node{position:relative;display:flex;align-items:center;gap:14px;width:50%;padding:10px 34px 10px 0;margin-bottom:8px}
+.sh-node.r{margin-left:50%;padding:10px 0 10px 34px;flex-direction:row-reverse}
+.sh-node .no{position:absolute;right:-17px;top:50%;margin-top:-17px;width:34px;height:34px;border-radius:50%;background:var(--card);border:3px solid var(--rose);display:grid;place-items:center;font-family:Lora,serif;font-weight:600;color:var(--rose);font-size:14px;z-index:1;transition:.3s}
+.sh-node.r .no{right:auto;left:-17px}
+.sh-node .nt{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 14px;font-size:16px;line-height:2.3;color:var(--plum);transition:.3s;text-align:right}
+a.sh-node:hover .nt{background:var(--rose2);transform:scale(1.03)}
+a.sh-node:hover .no{background:var(--rose);color:#fff;transform:scale(1.15)}
+.sh-node.soon{opacity:.6}.sh-node.soon .no{border-style:dashed;border-color:var(--soft);color:var(--soft)}
+.sh-node.soon .nt{border-style:dashed;background:transparent}
+
+.sh-qs{position:relative;max-width:720px;margin:0 auto;min-height:230px;text-align:center}
+.sh-q{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(.96);transition:opacity 1s,transform 1s;pointer-events:none}
+.sh-q.on{opacity:1;transform:none;pointer-events:auto}
+.sh-q .t{font-size:clamp(22px,4.2vw,32px);line-height:2.3;color:var(--plum)}
+.sh-q .t:before{content:"\201C";display:block;font-family:Lora,serif;font-size:64px;line-height:.6;color:var(--rose);opacity:.5}
+.sh-q .a{margin-top:8px;color:var(--rose);font-size:15px;line-height:2}
+.sh-qd{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.sh-qd button{width:9px;height:9px;border:0;border-radius:50%;background:var(--line);padding:0;cursor:pointer;transition:.3s}
+.sh-qd button.on{background:var(--rose);transform:scale(1.35)}
+
+.sh-end{margin-top:60px;padding:70px 20px 60px;background:radial-gradient(circle at 50% 0,#6b2a4d,#2a1228 70%);color:#fff;text-align:center;overflow:hidden;position:relative}
+.sh-end .b3d{margin:0 auto 24px;animation:shFloat 5s ease-in-out infinite}
+@keyframes shFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-12px) rotate(1.5deg)}}
+.sh-end h2{margin:0;font-size:clamp(26px,5vw,38px);line-height:2.2;font-weight:700}
+.sh-end p{margin:0 auto 20px;max-width:520px;color:#e8d6dc;line-height:2.4;font-size:17px}
+.sh-end .bb{justify-content:center}
+.sh-end .btn.o{color:#fff;border-color:rgba(255,255,255,.7)}
+.sh-end .btn.r{padding:8px 26px;font-size:15px;animation:shGlow 2.4s infinite}
+@keyframes shGlow{0%,100%{box-shadow:0 0 0 0 rgba(201,86,111,.55)}50%{box-shadow:0 0 0 14px rgba(201,86,111,0)}}
+.sh-foot{text-align:center;font-size:12.5px;padding:14px 20px 26px;background:#2a1228;color:#c9b3bd}
+@media(max-width:900px){.sh-chars{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+ .sh-lines{width:80vw}
+ .sh-hero{min-height:480px}
+ .sh-path:before,.sh-fill{left:22px}
+ .sh-node,.sh-node.r{width:100%;margin-left:0;padding:8px 0 8px 52px;flex-direction:row-reverse}
+ .sh-node .no,.sh-node.r .no{left:5px;right:auto}
+ .sh-chars{gap:12px}.sh-card{padding:20px 10px 18px}.sh-card p{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .sh-star,.sh-win,.sh-moon,.sh-mist,.sh-end .b3d,.sh-end .btn.r,.sh-card.q .sh-av,.sh-cue i:after{animation:none}
+ .sh-kick,.sh-sub,.sh-ln,.sh-title .w{animation:none;opacity:1;transform:none;filter:none}
+ .rv{opacity:1;transform:none;transition:none}
+ .sh-lines p,.sh-bg{transition:none}
+}
+
 </style>
 <link rel="manifest" href="/manifest.json" id="mf">
 <script>
@@ -277,46 +393,111 @@ a.trow:hover{background:#f7e9d3}
   </div></header>
 
 <div id="homeV">
-<section class="hero">
-  <svg class="bg" viewBox="0 0 1200 290" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<div class="sh-prog" id="shProg"></div>
+
+<section class="sh-hero" id="shHero">
+  <svg class="sh-scene" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
-      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2150"/><stop offset=".55" stop-color="#a34a6a"/><stop offset="1" stop-color="#f09a6a"/></linearGradient>
-      <radialGradient id="glow" cx=".5" cy="1" r=".6"><stop offset="0" stop-color="#ffd7a0" stop-opacity=".8"/><stop offset="1" stop-color="#ffd7a0" stop-opacity="0"/></radialGradient>
-      <radialGradient id="vig" cx=".5" cy=".5" r=".8"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1c0f1d" stop-opacity=".75"/></radialGradient>
+      <linearGradient id="shSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24123a"/><stop offset=".5" stop-color="#7a3a63"/><stop offset=".82" stop-color="#d9798a"/><stop offset="1" stop-color="#f6c39a"/></linearGradient>
+      <radialGradient id="shMoonG" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3d6" stop-opacity=".95"/><stop offset=".35" stop-color="#ffe3b8" stop-opacity=".35"/><stop offset="1" stop-color="#ffe3b8" stop-opacity="0"/></radialGradient>
+      <linearGradient id="shMistG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9e0" stop-opacity="0"/><stop offset="1" stop-color="#ffd9e0" stop-opacity=".35"/></linearGradient>
+      <radialGradient id="shVig" cx=".5" cy=".5" r=".8"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#12081a" stop-opacity=".7"/></radialGradient>
     </defs>
-    <rect width="1200" height="290" fill="url(#sky)"/><rect width="1200" height="290" fill="url(#glow)"/>
-    <g fill="#3b1f3d" opacity=".9">
-      <path d="M250 290V205l14-8v-30l5-14 5 14v30l14 8v85zM620 290V215h30c0-22 10-34 20-42 10 8 20 20 20 42h30v75zM670 173v-24l2-10 2 10v24z"/>
-      <path d="M840 290V222h12v-40l4-8 4 8v40h12v68zM450 290V232c0-18 22-30 40-30s40 12 40 30v58z"/>
-      <rect y="262" width="1200" height="28"/>
+    <rect width="1200" height="800" fill="url(#shSky)"/>
+    <g class="ly" data-depth="0.05" id="shStars"></g>
+    <g class="ly" data-depth="0.08"><circle class="sh-moon" cx="930" cy="190" r="190" fill="url(#shMoonG)"/><circle cx="930" cy="190" r="46" fill="#fff0d0"/></g>
+    <g class="ly" data-depth="0.12" fill="#5a2a55" opacity=".75"><path d="M0 560C120 500 240 520 360 545S600 520 760 540 1040 500 1200 540V800H0z"/></g>
+    <g class="ly" data-depth="0.2" fill="#3a1b45">
+      <path d="M0 640V560h70v-30h40v30h40v-50h50v50h60v80zM360 640v-90h60v-40h50v40h40v90zM640 640v-70c0-30 24-52 50-52s50 22 50 52v70zM790 640v-100h70v-30h50v30h50v100zM1010 640v-70h60v-40h40v40h90v70z"/>
+      <path d="M470 640v-40h20v-26l10-18 10 18v26h20v40zM700 520l4-20 4 20z"/>
     </g>
-    <g fill="#ffe7b8" opacity=".9"><circle cx="500" cy="238" r="2"/><circle cx="660" cy="250" r="2"/><circle cx="845" cy="240" r="2"/><circle cx="270" cy="225" r="2"/></g>
-    <g fill="#f4b3c4" opacity=".55"><circle cx="1090" cy="60" r="34"/><circle cx="1140" cy="120" r="44"/><circle cx="1050" cy="150" r="26"/><circle cx="1110" cy="230" r="40"/></g>
-    <g fill="#ffe0d0" opacity=".7"><circle cx="1090" cy="60" r="14"/><circle cx="1140" cy="120" r="18"/><circle cx="1110" cy="230" r="16"/></g>
-    <g><rect x="1010" y="190" width="30" height="60" rx="5" fill="#2a1626"/><rect x="1016" y="198" width="18" height="44" rx="3" fill="#ffc979"/><circle cx="1025" cy="220" r="46" fill="#ffc979" opacity=".18"/></g>
-    <rect width="1200" height="290" fill="url(#vig)"/>
+    <g class="ly" data-depth="0.2">
+      <rect class="sh-win" x="86" y="582" width="10" height="16" fill="#ffc979"/><rect class="sh-win" x="140" y="560" width="10" height="16" fill="#ffc979" style="animation-delay:1.1s"/>
+      <rect class="sh-win" x="378" y="572" width="12" height="18" fill="#ffc979" style="animation-delay:2.2s"/><rect class="sh-win" x="810" y="560" width="12" height="18" fill="#ffc979" style="animation-delay:.6s"/>
+      <rect class="sh-win" x="1040" y="588" width="12" height="18" fill="#ffc979" style="animation-delay:3s"/><rect class="sh-win" x="1130" y="580" width="10" height="16" fill="#ffc979" style="animation-delay:1.7s"/>
+    </g>
+    <g class="ly" data-depth="0.3"><ellipse class="sh-mist" cx="400" cy="650" rx="520" ry="70" fill="url(#shMistG)"/><ellipse class="sh-mist b" cx="900" cy="690" rx="560" ry="80" fill="url(#shMistG)"/></g>
+    <g class="ly" data-depth="0.4" fill="#1d0d27">
+      <path d="M0 800V700c60-10 100-40 160-40s70 30 140 30 90-40 170-40 120 30 190 30 100-34 180-34 110 34 190 34 110-30 170-30V800z"/>
+      <path d="M190 700V610h14v-14h10v14h14v90zM1000 700v-70h50v70z"/>
+      <rect x="196" y="622" width="8" height="12" fill="#ffc979" class="sh-win" style="animation-delay:.9s"/>
+    </g>
+    <rect width="1200" height="800" fill="url(#shVig)"/>
   </svg>
-  <div class="txt">
-    <h1 class="ur">کہانیاں جو دل کو چھو جائیں…</h1>
-    <div class="ln"><svg class="i"><use href="#heart"/></svg></div>
-    <p>Read &nbsp;·&nbsp; Feel &nbsp;·&nbsp; Live</p>
+  <canvas id="shPetals"></canvas>
+  <div class="sh-herotxt">
+    <p class="ur sh-kick">جویریہ پنوار کی نئی کہانی</p>
+    <h1 class="ur sh-title" aria-label="تُو ہی میری آخری محبت"><span class="w" style="--i:0">تُو</span><span class="w" style="--i:1">ہی</span><span class="w" style="--i:2">میری</span><span class="w" style="--i:3">آخری</span><span class="w" style="--i:4">محبت</span></h1>
+    <div class="sh-sub">Tu Hi Meri Akhri Mohabbat</div>
+    <div class="sh-ln"><svg class="i"><use href="#heart"/></svg></div>
+  </div>
+  <a class="sh-cue" href="#sh-story" id="shCue"><span>Scroll</span><i></i></a>
+</section>
+
+<section class="sh-story" id="sh-story" style="--n:6">
+  <div class="sh-sticky">
+    <div class="sh-bg b0 on"></div><div class="sh-bg b1"></div><div class="sh-bg b2"></div><div class="sh-bg b3"></div><div class="sh-bg b4"></div><div class="sh-bg b5"></div>
+    <div class="sh-lines ur" id="shLines">
+      <p>صادق آباد کی ایک سرد صبح…</p>
+      <p>ایک لڑکا، جس کی <b>اکڑ</b> اس کی ڈھال تھی۔</p>
+      <p>اور جس کی <b>سانس</b> اس کا سب سے بڑا امتحان۔</p>
+      <p>پھر ایک رات، ایک انجان فون سے…<br>ایک <b>آواز</b> آئی۔</p>
+      <p>نہ چہرہ۔ نہ پتا۔<br>بس ایک آواز، جو دھند میں بھی سنائی دیتی تھی۔</p>
+      <p>کچھ دروازے <b>قسمت</b> کھولتی ہے،<br>اور کچھ دروازے کھولنے کے بعد بھی بند رہتے ہیں۔</p>
+    </div>
+    <div class="sh-dots" id="shDots"></div>
   </div>
 </section>
 
-<div class="wrap main1">
-  <h2 class="h" id="feat"><svg class="i"><use href="#crown"/></svg>Novels by Javeria Panwar</h2>
-  <div class="shelf">
-    <a class="homebook" href="#read-aakhri" aria-label="تُو ہی میری آخری محبت پڑھیں">
-      <div class="b3d  v3"><div class="cv">
-        <svg class="i" style="font-size:44px"><use href="#book"/></svg>
-        <div class="ur ct">تُو ہی میری آخری محبت</div>
-        <div class="cl"></div>
-        <em>Javeria Panwar</em>
-        <div class="ur cb">جویریہ پنوار</div>
-      </div></div>
-    </a>
+<section class="sh-sec">
+  <div class="wrap">
+    <h2 class="ur sh-h rv">کہانی کے چہرے</h2>
+    <p class="ur sh-hs rv" style="--dl:.1s">کچھ لوگ جو آپ کے ساتھ رہ جائیں گے۔</p>
+    <div class="sh-chars ur">
+      <div class="sh-card rv" style="--c:#8a4a62;--dl:.05s"><div class="sh-av"><span>غ</span></div><h3>غازی زیان</h3><p>بھوری آنکھیں، ضدی لہجہ۔ جو بولنا نہیں چاہتا، وہ سر ہلا دیتا ہے۔</p></div>
+      <div class="sh-card rv" style="--c:#c9566f;--dl:.18s"><div class="sh-av"><span>ع</span></div><h3>علیزے</h3><p>ایک نرم، ٹھہری ہوئی آواز۔ اتنی سچی کہ ڈر لگے۔</p></div>
+      <div class="sh-card rv" style="--c:#6d6a9c;--dl:.31s"><div class="sh-av"><span>ز</span></div><h3>زنیشہ</h3><p>تیز زبان، تیز آنکھیں۔ دو دلوں کے بیچ کی واحد ڈاک۔</p></div>
+      <div class="sh-card q rv" style="--c:#8a7480;--dl:.44s"><div class="sh-av"><span>؟</span></div><h3>ایک اور چہرہ</h3><p>سندھ کی کسی حویلی میں، جو ابھی اپنی کہانی نہیں جانتا۔</p></div>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="sh-sec">
+  <div class="wrap">
+    <h2 class="ur sh-h rv">قسط بہ قسط سفر</h2>
+    <p class="ur sh-hs rv" style="--dl:.1s">کسی بھی موڑ پر ٹھہریں، وہیں سے پڑھنا شروع کریں۔</p>
+    <div class="sh-path" id="shPath"><div class="sh-fill" id="shFill"></div></div>
+  </div>
+</section>
+
+<section class="sh-sec">
+  <div class="wrap">
+    <h2 class="ur sh-h rv">چند سطریں</h2>
+    <div class="sh-qs ur rv" id="shQs" style="--dl:.1s">
+      <div class="sh-q on"><div class="t">کبھی کبھی وہی لوگ ہمیں بھول جاتے ہیں جنہیں ہم سب سے زیادہ یاد رکھنا چاہتے ہیں۔</div><div class="a">— علیزے</div></div>
+      <div class="sh-q"><div class="t">ماما، ڈریں مت۔ میں یہیں ہوں۔</div><div class="a">— غازی</div></div>
+      <div class="sh-q"><div class="t">لفظ واپس نہیں ہوتے، غازی۔ بس ان کا اثر کم ہوتا ہے۔</div><div class="a">— علیزے</div></div>
+      <div class="sh-q"><div class="t">تم زیادہ نہیں مانگ رہیں۔<br>— تو پھر آپ کم کیوں دیتے ہیں؟</div><div class="a">— غازی اور علیزے</div></div>
+    </div>
+    <div class="sh-qd" id="shQd"></div>
+  </div>
+</section>
+
+<section class="sh-end">
+  <a class="homebook" href="#read-aakhri-1" aria-label="تُو ہی میری آخری محبت پڑھیں" style="padding:0">
+    <div class="b3d v3"><div class="cv">
+      <svg class="i" style="font-size:44px"><use href="#book"/></svg>
+      <div class="ur ct">تُو ہی میری آخری محبت</div>
+      <div class="cl"></div><em>Javeria Panwar</em><div class="ur cb">جویریہ پنوار</div>
+    </div></div>
+  </a>
+  <h2 class="ur">کہانی آپ کا انتظار کر رہی ہے</h2>
+  <p class="ur">ہر قسط ایک نیا ورق۔ اور ہر ورق پر ایک نیا دل۔</p>
+  <div class="bb">
+    <a class="btn r ur" id="shStart" href="#read-aakhri-1">شروع سے پڑھیں</a>
+    <a class="btn o ur" id="shResume" href="#read-aakhri" hidden>جہاں چھوڑا تھا وہیں سے</a>
+  </div>
+</section>
 </div>
 
 <div id="bookV" hidden>
@@ -2582,6 +2763,112 @@ ib.onclick=function(){
 document.getElementById("tipClose").onclick=function(){document.getElementById("tip").hidden=true};
 document.getElementById("tip").onclick=function(e){if(e.target===this)this.hidden=true};
 if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0){window.addEventListener("load",function(){try{navigator.serviceWorker.register("/sw.js")}catch(e){}})}
+</script>
+<script>
+(function(){
+var home=document.getElementById("homeV");if(!home)return;
+var RM=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function $(s){return home.querySelector(s)}
+function $$(s){return Array.prototype.slice.call(home.querySelectorAll(s))}
+
+/* stars */
+(function(){var g=document.getElementById("shStars"),h="",s=7;function r(){s=(s*9301+49297)%233280;return s/233280}
+ for(var i=0;i<46;i++){var x=r()*1200,y=r()*420,z=r()*1.6+.5;h+='<circle class="sh-star" cx="'+x.toFixed(0)+'" cy="'+y.toFixed(0)+'" r="'+z.toFixed(1)+'" fill="#fff" style="animation-delay:'+(r()*4).toFixed(1)+'s;animation-duration:'+(2.6+r()*3).toFixed(1)+'s"/>'}
+ g.innerHTML=h})();
+
+/* reveal on scroll */
+var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15,rootMargin:"0px 0px -6% 0px"}):null;
+function watch(el){if(io&&!RM)io.observe(el);else el.classList.add("in")}
+$$(".rv").forEach(watch);
+
+/* chapter path */
+(function(){
+ var box=document.getElementById("shPath");if(!box)return;
+ try{setNovel("aakhri");paginate()}catch(e){return}
+ var h="";
+ Object.keys(EPTITLE).map(Number).sort(function(a,b){return a-b}).forEach(function(n,i){
+  var t=String(EPTITLE[n]).replace(/^قسط\s*\d+\s*[:：]\s*/,"");
+  h+='<a class="sh-node rv ur '+(i%2?"r":"l")+'" href="#read-aakhri-'+EPSTART[n]+'"><span class="no">'+n+'</span><span class="nt">'+t+'</span></a>';
+ });
+ h+='<div class="sh-node soon rv ur '+(Object.keys(EPTITLE).length%2?"r":"l")+'"><span class="no">…</span><span class="nt">اگلی قسط جلد آ رہی ہے</span></div>';
+ box.insertAdjacentHTML("beforeend",h);
+ Array.prototype.forEach.call(box.querySelectorAll(".rv"),watch);
+})();
+
+/* story (sticky scroll) */
+var story=document.getElementById("sh-story"),lines=$$("#shLines p"),bgs=$$(".sh-bg"),dots=document.getElementById("shDots");
+lines.forEach(function(){dots.appendChild(document.createElement("i"))});
+var dotEls=Array.prototype.slice.call(dots.children),curI=-1;
+function setStory(i){
+ if(i===curI)return;curI=i;
+ lines.forEach(function(p,k){p.classList.toggle("on",k===i);p.classList.toggle("past",k<i)});
+ bgs.forEach(function(b,k){b.classList.toggle("on",k===Math.min(i,bgs.length-1))});
+ dotEls.forEach(function(d,k){d.classList.toggle("on",k===i)});
+}
+setStory(0);
+
+/* scroll handler */
+var hero=document.getElementById("shHero"),layers=Array.prototype.slice.call(hero.querySelectorAll(".ly")),
+    prog=document.getElementById("shProg"),fill=document.getElementById("shFill"),path=document.getElementById("shPath"),tk=false;
+function onScroll(){
+ tk=false;if(home.hidden)return;
+ var y=window.pageYOffset||0,vh=window.innerHeight,doc=document.documentElement;
+ prog.style.width=Math.min(100,y/Math.max(1,doc.scrollHeight-vh)*100)+"%";
+ if(!RM&&y<hero.offsetHeight+80){layers.forEach(function(l){l.style.transform="translate3d(0,"+(y*l.dataset.depth).toFixed(1)+"px,0)"})}
+ var sr=story.getBoundingClientRect(),total=story.offsetHeight-vh;
+ var p=Math.max(0,Math.min(.9999,-sr.top/Math.max(1,total)));
+ setStory(Math.min(lines.length-1,Math.floor(p*lines.length)));
+ var pr=path.getBoundingClientRect(),f=(vh*.6-pr.top)/Math.max(1,pr.height);
+ fill.style.height=Math.max(0,Math.min(1,f))*100+"%";
+}
+function req(){if(!tk){tk=true;requestAnimationFrame(onScroll)}}
+window.addEventListener("scroll",req,{passive:true});window.addEventListener("resize",req);
+window.addEventListener("hashchange",function(){setTimeout(req,60)});
+var cue=document.getElementById("shCue");
+if(cue)cue.addEventListener("click",function(e){e.preventDefault();story.scrollIntoView({behavior:RM?"auto":"smooth"})});
+req();
+
+/* quotes */
+(function(){
+ var qs=$$("#shQs .sh-q"),qd=document.getElementById("shQd"),i=0,t=null,hov=false;
+ qs.forEach(function(_,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Quote "+(k+1));b.onclick=function(){go(k);restart()};qd.appendChild(b)});
+ var bs=Array.prototype.slice.call(qd.children);
+ function go(k){i=k;qs.forEach(function(q,j){q.classList.toggle("on",j===k)});bs.forEach(function(b,j){b.classList.toggle("on",j===k)})}
+ function restart(){clearInterval(t);if(!RM)t=setInterval(function(){if(!hov&&!home.hidden)go((i+1)%qs.length)},6500)}
+ var box=document.getElementById("shQs");box.addEventListener("mouseenter",function(){hov=true});box.addEventListener("mouseleave",function(){hov=false});
+ go(0);restart();
+})();
+
+/* resume button */
+try{var sv=parseInt(localStorage.getItem("jv_aakhri_page"),10)||0;if(sv>1){var rb=document.getElementById("shResume");rb.hidden=false}}catch(e){}
+
+/* petals */
+(function(){
+ if(RM)return;
+ var cv=document.getElementById("shPetals"),cx=cv.getContext&&cv.getContext("2d");if(!cx)return;
+ var W=0,H=0,dpr=Math.min(2,window.devicePixelRatio||1),P=[],vis=true,raf=0,cols=["#f4b3c4","#ffd9e0","#f6c39a","#e98aa3","#fff0f3"];
+ function size(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+ function mk(init){return{x:Math.random()*W,y:init?Math.random()*H:-20,s:5+Math.random()*7,v:.35+Math.random()*.7,sw:Math.random()*Math.PI*2,sp:.008+Math.random()*.014,a:Math.random()*6.28,ra:(Math.random()-.5)*.03,c:cols[(Math.random()*cols.length)|0],o:.35+Math.random()*.5}}
+ size();var N=W<600?16:28;for(var i=0;i<N;i++)P.push(mk(true));
+ function frame(){
+  raf=0;if(!vis||home.hidden||document.hidden)return;
+  cx.clearRect(0,0,W,H);
+  P.forEach(function(p,k){
+   p.sw+=p.sp;p.y+=p.v;p.x+=Math.sin(p.sw)*.6+.12;p.a+=p.ra;
+   if(p.y>H+20||p.x>W+30)P[k]=p=mk(false);
+   cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.globalAlpha=p.o;cx.fillStyle=p.c;
+   cx.beginPath();cx.ellipse(0,0,p.s,p.s*.55,0,0,6.2832);cx.fill();cx.restore();
+  });
+  raf=requestAnimationFrame(frame);
+ }
+ function start(){if(!raf)raf=requestAnimationFrame(frame)}
+ if("IntersectionObserver" in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)start()},{threshold:0}).observe(hero)}
+ window.addEventListener("resize",size);
+ document.addEventListener("visibilitychange",start);
+ window.addEventListener("hashchange",function(){setTimeout(start,80)});
+ start();
+})();
+})();
 </script>
 </body>
 </html>
